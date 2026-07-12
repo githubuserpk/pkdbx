@@ -1,0 +1,29 @@
+In this file, we create a azure databricks catalog called 
+
+catalog: testing_az 
+schema: pk
+table: azure_table 
+
+While creating the catalog it is created as a managed catalog 
+
+Azure                                                       DBX 
+=======                                                     ========
+storage account  dbx-access connector managed identity      storage credential UC object    External Locn UC object          
+ container
+  testing_az
+    pk
+
+
+RG [Resource Group Hierarchy]
+|__storage account and Managed Identity at Level 1
+    |__container at next level 2 
+
+
+In pkdeltaai.01 azure account
+    pkdelta resource group rg 
+L1    |_pkdelta storage gen2      [storage account under the resource group]      dbx access connector managed identity
+L2    |_pkdelta container dev   [ this is the object storage bucket]
+
+storage credential created: pk storage credential 
+external location specified is abfss://az container @ storage account gen2name.dfs.core.windows.net/
+
